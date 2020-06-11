@@ -70,6 +70,8 @@ export default {
     })
   },
   mounted() {
+     navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.getUserMedia
+
     navigator.mediaDevices
       .getUserMedia({ audio: true, video: true })
       .then(stream => {
