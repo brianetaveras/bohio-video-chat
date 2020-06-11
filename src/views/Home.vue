@@ -2,6 +2,7 @@
   <div class="home">
     <video
       ref="friends-video"
+      controls
       poster="https://techcrunch.com/wp-content/uploads/2016/10/tv-countdown.gif?w=730&crop=1"
       id="friends-video"
       autoplay
