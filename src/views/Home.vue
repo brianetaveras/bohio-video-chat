@@ -39,7 +39,8 @@ export default {
       myId: null,
       onlineUsers: {},
       callData: null,
-      callPrompt: false
+      callPrompt: false,
+      isBusy: false
     };
   },
   components: {
@@ -55,7 +56,9 @@ export default {
     this.io.on("usersOnline", users => (this.onlineUsers = users));
 
     this.io.on('callRequest', (data) =>{
-      this.callPrompt = true;
+      if(!this.isBusy){
+        this.callPrompt = true;
+      }
       this.callData = {
         id: data.from,
         name: data.from,
@@ -69,7 +72,8 @@ export default {
       .then(stream => {
         this.stream = stream;
         this.$refs["my-video"].srcObject = stream;
-        this.$refs["my-video"].play()
+        this.$refs["my-video"].play();
+
       });
   },
   methods: {
