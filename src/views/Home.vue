@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <video
+    playsinline
       ref="friends-video"
       controls
       poster="https://techcrunch.com/wp-content/uploads/2016/10/tv-countdown.gif?w=730&crop=1"
@@ -8,6 +9,7 @@
       autoplay
     ></video>
     <video
+    playsinline
       controls
       ref="my-video"
       muted
