@@ -51,7 +51,7 @@ export default {
     HelloWorld
   },
   created() {
-    this.io = io("https://6ffb3096ee85.ngrok.io/");
+    this.io = io("https://39e454bbdf38.ngrok.io/");
 
     this.io.on("init", id => {
       this.myId = id;
