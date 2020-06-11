@@ -59,6 +59,7 @@ export default {
     this.io.on('callRequest', (data) =>{
       if(!this.isBusy){
         this.callPrompt = true;
+        this.isBusy = true;
       }
       this.callData = {
         id: data.from,
@@ -72,8 +73,12 @@ export default {
       .getUserMedia({ audio: true, video: true })
       .then(stream => {
         this.stream = stream;
-        this.$refs["my-video"].srcObject = stream;
-        this.$refs["my-video"].play();
+        const video = this.$refs["my-video"];
+        if ('srcObject' in video) {
+          video.srcObject = stream
+        } else {
+          video.src = window.URL.createObjectURL(stream) // for older browsers
+        }
 
       });
   },
@@ -131,9 +136,12 @@ export default {
       peer.signal(this.callData.signal);
     },
     setFriendVideo(stream) {
-      console.log(stream);
-      this.$refs["friends-video"].srcObject = stream;
-      this.$refs["friends-video"].play()
+      const video = this.$refs["friends-video"];
+      if ('srcObject' in video) {
+        video.srcObject = stream
+      } else {
+        video.src = window.URL.createObjectURL(stream) // for older browsers
+      }
     }
   }
 };
