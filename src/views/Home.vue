@@ -8,6 +8,7 @@
       autoplay
     ></video>
     <video
+      controls
       ref="my-video"
       muted
       poster="https://techcrunch.com/wp-content/uploads/2016/10/tv-countdown.gif?w=730&crop=1"
